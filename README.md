@@ -65,7 +65,7 @@ public interface IClienteDAO {
 Implementa a interface `IClienteDAO` utilizando um `HashMap` para armazenamento dos clientes.
 
 ```java
-public class ClienteMapDAO implements IClienteDAO {
+public class ClienteMapDAO implements IClienteDAO{
     private Map<Long, Cliente> map;
 
     public ClienteMapDAO() {
@@ -83,12 +83,17 @@ public class ClienteMapDAO implements IClienteDAO {
 
     @Override
     public void excluir(Long cpf){
-        this.map.remove(cpf);
-    }
+        Cliente clienteCadastrado = this.map.get(cpf);
 
+        if (clienteCadastrado != null) {
+            this.map.remove(clienteCadastrado.getCpf(), clienteCadastrado);
+        }
+        }
     @Override
-    public void alterar(Cliente cliente){
-        this.map.put(cliente.getCpf(), cliente);
+    public void alterar(Cliente cliente) {
+        if (this.map.containsKey(cliente.getCpf())) {
+            this.map.put(cliente.getCpf(), cliente);
+        }
     }
 
     @Override
