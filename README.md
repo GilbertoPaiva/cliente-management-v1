@@ -126,7 +126,7 @@ public class App {
                 sair();
             }
             opcao = JOptionPane.showInputDialog(null,
-                    "Opção inválida digite 1 para cadastro, 2 para consulta, 3 para cadastro, 4 para alteração ou 5 para sair",
+                    "Opção inválida digite 1 para cadastro, 2 para consulta, 3 para exclusão, 4 para alteração ou 5 para sair",
                     "Green dinner", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -135,19 +135,28 @@ public class App {
                 sair();
             } else if (isCadastro(opcao)) {
                 String dados = JOptionPane.showInputDialog(null,
-                        "Digite os dados do cliente separados por vígula, conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade e Estado",
+                        "Digite os dados do cliente separados por vírgula, conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade e Estado",
                         "Cadastro", JOptionPane.INFORMATION_MESSAGE);
                 cadastrar(dados);
-            } else if(isConsultar(opcao)) {
+            } else if (isConsultar(opcao)) {
                 String dados = JOptionPane.showInputDialog(null,
                         "Digite o cpf",
                         "Consultar", JOptionPane.INFORMATION_MESSAGE);
-
                 consultar(dados);
+            } else if (isExcluir(opcao)) {
+                String dados = JOptionPane.showInputDialog(null,
+                        "Digite o cpf",
+                        "Excluir", JOptionPane.INFORMATION_MESSAGE);
+                excluir(dados);
+            } else if (isAlterar(opcao)) {
+                String dados = JOptionPane.showInputDialog(null,
+                        "Digite os dados do cliente separados por vírgula, conforme exemplo: Nome, CPF, Telefone, Endereço, Número, Cidade e Estado",
+                        "Alterar", JOptionPane.INFORMATION_MESSAGE);
+                alterar(dados);
             }
 
             opcao = JOptionPane.showInputDialog(null,
-                    "Digite 1 para cadastro, 2 para consulta, 3 para cadastro, 4 para alteração ou 5 para sair",
+                    "Digite 1 para cadastro, 2 para consulta, 3 para exclusão, 4 para alteração ou 5 para sair",
                     "Green dinner", JOptionPane.INFORMATION_MESSAGE);
         }
     }
@@ -155,12 +164,12 @@ public class App {
     private static void consultar(String dados) {
         Cliente cliente = iClienteDAO.consultar(Long.parseLong(dados));
         if (cliente != null) {
-            JOptionPane.showMessageDialog(null, "Cliente encontrado: " + cliente.toString(), "Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cliente encontrado: " + cliente.toString(), "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado: ", "Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado: ", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
-
     }
+
 
     // Outros métodos auxiliares como isOpcaoValida, isCadastro, sair, etc.
 }
