@@ -32,15 +32,9 @@ public class ClienteMapDAO implements IClienteDAO{
         }
         }
     @Override
-    public void alterar(Cliente cliente){
-        Cliente clienteCadastrado = this.map.get(cliente.getCpf());
-        if (clienteCadastrado != null){
-            clienteCadastrado.setNome(cliente.getNome());
-            clienteCadastrado.setTel(cliente.getTel());
-            clienteCadastrado.setNumero(cliente.getNumero());
-            clienteCadastrado.setEnd(cliente.getEnd());
-            clienteCadastrado.setCidade(cliente.getCidade());
-            clienteCadastrado.setEstado(cliente.getEstado());
+    public void alterar(Cliente cliente) {
+        if (this.map.containsKey(cliente.getCpf())) {
+            this.map.put(cliente.getCpf(), cliente);
         }
     }
 
