@@ -191,5 +191,3 @@ public class App {
 Sinta-se à vontade para contribuir com melhorias. Faça um fork do projeto, crie uma branch para sua feature e envie um pull request.
 
 ---
-
-Essa documentação reflete as funcionalidades atuais do projeto e está formatada para ser visualmente clara e fácil de navegar. Se precisar de mais alguma coisa, estou à disposição!
